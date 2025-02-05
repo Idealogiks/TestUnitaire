@@ -42,3 +42,25 @@ describe("when i want to calculate the price", () => {
         expect(calculateTotalPrice([1], 0,2)).not.toBe(50)
     });
 })
+
+describe("When i want to send a notification", () => {
+    test("should display the good notification", () => {
+        const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {});
+        sendNotification("snif");
+        expect(consoleSpy).toHaveBeenCalledWith("Notification envoyée : snif");
+        consoleSpy.mockRestore();
+    });
+    test("should not display the good notification", () => {
+        const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {});
+        sendNotification("fatiguée");
+        expect(consoleSpy).not.toHaveBeenCalledWith("Notification envoyée : snif");
+        consoleSpy.mockRestore();
+    });
+    test("should not display the notification because it's not a string", () => {
+        const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {});
+        sendNotification(1);
+        expect(consoleSpy).not.toHaveBeenCalledWith("Notification envoyée : snif");
+        consoleSpy.mockRestore();
+    });
+});
+
