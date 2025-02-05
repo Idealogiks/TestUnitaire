@@ -1,11 +1,12 @@
 # TestUnitaire
 Evaluation test unitaire 
 
+Je m'excuse pour les premiers commits qui sont vraiment très mal faits, j'ai eu des difficultés avec github qui m'ont freinées dans mon travail 
 
-Je m'excuse, les commit sont super chaotiques. J'ai fait n'importe quoi et j'ai crée des conflits toute seule donc en plus j'ai perdu plein de temps, c'était vraiment chaotique. 
+idealogiks : Gladys Bernard |
+lxmadara : Elias hamidi   
 
+Résultat de nos tests : 
+![image](https://github.com/user-attachments/assets/2faa19b0-d2df-45b5-af15-6297da0e9b29)
 
-idealogiks : Gladys Bernard 
-             Elias hamidi alias lxmadara 
-![image](https://github.com/user-attachments/assets/2c5c085d-73fa-4a18-986d-f4fcd3058010)
 
