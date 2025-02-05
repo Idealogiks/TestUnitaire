@@ -3,7 +3,7 @@ Evaluation test unitaire
 
 Je m'excuse pour les premiers commits qui sont vraiment très mal faits, j'ai eu des difficultés avec github qui m'ont freinées dans mon travail 
 
-idealogiks : Gladys Bernard 
+idealogiks : Gladys Bernard |
 lxmadara : Elias hamidi   
 
 Résultat de nos tests : 
