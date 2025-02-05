@@ -121,6 +121,10 @@ describe("processPurchase", () => {
     test("should throw an error if length is not a number", () => {
         expect(() => generatePassword("10", {})).toThrow("Length must be a number greater than or equal to 6");
     });
+
+    test("shouldn't throw an error if length is a number", () => {
+        expect(() => generatePassword(10, {})).not.toThrow("Length must be a number greater than or equal to 6");
+    });
   
     test("should throw an error if length is less than 6", () => {
         expect(() => generatePassword(5, {})).toThrow("Length must be a number greater than or equal to 6");
@@ -145,14 +149,29 @@ describe("processPurchase", () => {
         expect(/[A-Z]/.test(password)).toBe(true);
     });
 
+    test("shouldn't contain at least one uppercase letter if disabled", () => {
+        const password = generatePassword(10, { uppercase: false, numbers: false, specialChars: false });
+        expect(/[A-Z]/.test(password)).toBe(false);
+    });
+
     test("should contain at least one number if enabled", () => {
         const password = generatePassword(10, { uppercase: false, numbers: true, specialChars: false });
         expect(/[0-9]/.test(password)).toBe(true);
+    });
+
+    test("shouldn't contain at least one number if disabled", () => {
+        const password = generatePassword(10, { uppercase: false, numbers: false, specialChars: false });
+        expect(/[0-9]/.test(password)).toBe(false);
     });
   
     test("should contain at least one special character if enabled", () => {
         const password = generatePassword(10, { uppercase: false, numbers: false, specialChars: true });
         expect(/[!@#$%^&*()_+\[\]{}|;:,.<>?]/.test(password)).toBe(true);
+    });
+
+    test("shouldn't contain at least one special character if disabled", () => {
+        const password = generatePassword(10, { uppercase: false, numbers: false, specialChars: false });
+        expect(/[!@#$%^&*()_+\[\]{}|;:,.<>?]/.test(password)).toBe(false);
     });
   
     test("should not generate the same password twice in a row", () => {
