@@ -125,17 +125,26 @@ describe("processPurchase", () => {
     test("should throw an error if length is less than 6", () => {
         expect(() => generatePassword(5, {})).toThrow("Length must be a number greater than or equal to 6");
     });
+
+    test("shouldn't throw an error if length is more than 6", () => {
+        expect(() => generatePassword(7, {})).not.toThrow("Length must be a number greater than or equal to 6");
+    });
   
     test("should generate a password of the correct length", () => {
         const password = generatePassword(12, { uppercase: true, numbers: true, specialChars: true });
         expect(password.length).toBe(12);
+    });
+
+    test("shouldn't generate a password of the incorrect length", () => {
+        const password = generatePassword(11, { uppercase: true, numbers: true, specialChars: true });
+        expect(password.length).not.toBe(12);
     });
   
     test("should contain at least one uppercase letter if enabled", () => {
         const password = generatePassword(10, { uppercase: true, numbers: false, specialChars: false });
         expect(/[A-Z]/.test(password)).toBe(true);
     });
-  
+
     test("should contain at least one number if enabled", () => {
         const password = generatePassword(10, { uppercase: false, numbers: true, specialChars: false });
         expect(/[0-9]/.test(password)).toBe(true);
