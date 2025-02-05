@@ -33,7 +33,7 @@ describe("when i want to calculate the price", () => {
         const price = [-2];
         expect(() => calculateTotalPrice()).toThrow('Each price must be a non-negative number');
     });
-    test("then it throw an error when price is negative ", () => {
+    test("then it throw an // when price is negative ", () => {
         expect(() => calculateTotalPrice.price([-2])).toThrow('Each price must be a non-negative number');
     });
 })
