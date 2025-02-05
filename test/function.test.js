@@ -18,22 +18,27 @@ describe("when i want to verify if a number is even or not", () => {
 
 describe("when i want to calculate the price", () => {
     test("then it throw an error when price isn't array ", () => {
-        expect(() => calculateTotalPrice(2)).toThrow('Prices must be an array');
+        expect(() => calculateTotalPrice("10", 0.2)).toThrow('Prices must be an array');
     }); 
     test("then it not throw an error when price is an array ", () => {
-        expect(() => calculateTotalPrice([2])).not.toThrow('Prices must be an array');
+        expect(() => calculateTotalPrice([2], 0.2)).not.toThrow('Prices must be an array');
     });
     test("then it not throw an error when tax is an number ", () => {
-        expect(() => calculateTotalPrice(2)).not.toThrow('Tax rate must be a number');
+        expect(() => calculateTotalPrice([2], 2)).not.toThrow('Tax rate must be a number');
     });
     test("then it throw an error when tax isn't an number ", () => {
-        expect(() => calculateTotalPrice([2])).toThrow('Tax rate must be a number');
+        expect(() => calculateTotalPrice([2], [1])).toThrow('Tax rate must be a number');
     });
-    test("then it throw an error when price is negative ", () => {
-        const price = [-2];
-        expect(() => calculateTotalPrice()).toThrow('Each price must be a non-negative number');
+    test("then it throws an error when price is negative", () => {
+        expect(() => calculateTotalPrice([-2], 0.2)).toThrow('Each price must be a non-negative number');
     });
-    test("then it throw an // when price is negative ", () => {
-        expect(() => calculateTotalPrice.price([-2])).toThrow('Each price must be a non-negative number');
+    test("then it not throws an error when price is positive", () => {
+        expect(() => calculateTotalPrice([2], 0.2)).not.toThrow('Each price must be a non-negative number');
+    });
+    test("then the result should be", () => {
+        expect(calculateTotalPrice([1], 0,2)).toBe(1,2)
+    });
+    test("then the result shouldn't be", () => {
+        expect(calculateTotalPrice([1], 0,2)).not.toBe(50)
     });
 })
