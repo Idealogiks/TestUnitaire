@@ -68,17 +68,33 @@ describe("processPurchase", () => {
     test("should throw an error if the input is not an array", () => {
         expect(() => processPurchase(6, 6)).toThrow("Prices must be an array");
     });
+
+    test("shouldn't throw an error if the input is an array", () => {
+        expect(() => processPurchase([6], 6)).not.toThrow("Prices must be an array");
+    });
   
     test("should throw an error if the tax rate is not a number", () => {
         expect(() => processPurchase([6], "0.2")).toThrow("Tax rate must be a number");
+    });
+
+    test("shouldn't throw an error if the tax rate is a number", () => {
+        expect(() => processPurchase([6], 0.2)).not.toThrow("Tax rate must be a number");
     });
   
     test("should throw an error if an element in the array is not a number", () => {
         expect(() => processPurchase(["6"], 0.2)).toThrow("Each price must be a non-negative number");
     });
+
+    test("should'nt throw an error if an element in the array is a number", () => {
+        expect(() => processPurchase([6], 0.2)).not.toThrow("Each price must be a non-negative number");
+    });
   
     test("should throw an error if an element in the array is a negative number", () => {
         expect(() => processPurchase([-6], 0.2)).toThrow("Each price must be a non-negative number");
+    });
+
+    test("shouldn't throw an error if an element in the array is a positive number", () => {
+        expect(() => processPurchase([6], 0.2)).not.toThrow("Each price must be a non-negative number");
     });
   
     test("should return the correct total price", () => {
